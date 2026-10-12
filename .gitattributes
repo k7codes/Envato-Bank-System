@@ -1,2 +1,19 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Tum metin dosyalari depoda LF olarak saklanir; Windows'ta CRLF'e cevrilir.
+* text=auto eol=lf
+
+# Windows toplu is / betik dosyalari CRLF kalmali
+*.cmd text eol=crlf
+*.bat text eol=crlf
+mvnw text eol=lf
+
+# Ikili dosyalar
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.jar binary
+*.dll binary
+*.exe binary
+*.woff binary
+*.woff2 binary

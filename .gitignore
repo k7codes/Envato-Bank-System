@@ -1,0 +1,29 @@
+# ---- Secret / env ----
+.env
+backend/.env
+*.local.env
+
+# ---- Java / Maven ----
+backend/target/
+*.class
+
+# ---- .NET / WPF ----
+desktop/**/bin/
+desktop/**/obj/
+desktop/.vs/
+*.user
+*.suo
+
+# ---- IDE ----
+.idea/
+*.iml
+.vscode/
+
+# ---- Logs / publish ----
+*.log
+desktop/**/publish/
+
+# ---- OS ----
+Thumbs.db
+Desktop.ini
+.DS_Store

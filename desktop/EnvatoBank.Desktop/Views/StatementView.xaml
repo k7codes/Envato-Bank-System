@@ -1,0 +1,44 @@
+<UserControl x:Class="EnvatoBank.Desktop.Views.StatementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:EnvatoBank.Desktop.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:StatementViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Margin="0,0,0,16">
+            <Button DockPanel.Dock="Left" Content="‹ Geri" Command="{Binding BackCommand}"
+                    Style="{StaticResource SecondaryButton}" Padding="14,6"/>
+            <Button DockPanel.Dock="Right" Content="Yenile" Command="{Binding ReloadCommand}"
+                    Style="{StaticResource SecondaryButton}" Padding="14,6"/>
+            <TextBlock Text="Hareketler" Style="{StaticResource H1}" VerticalAlignment="Center" Margin="12,0,0,0"/>
+        </DockPanel>
+
+        <TextBlock Grid.Row="0" Text="{Binding Header}" Style="{StaticResource Muted}"
+                   HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,4,-4"/>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Entries}"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  CanUserAddRows="False" HeadersVisibility="Column" RowHeaderWidth="0"
+                  GridLinesVisibility="Horizontal"
+                  Background="{StaticResource BrushCard}"
+                  BorderBrush="{StaticResource BrushBorder}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tarih" Binding="{Binding DateDisplay}" Width="1.4*"/>
+                <DataGridTextColumn Header="İşlem" Binding="{Binding TypeDisplay}" Width="*"/>
+                <DataGridTextColumn Header="Tutar" Binding="{Binding AmountDisplay}" Width="1.4*"/>
+                <DataGridTextColumn Header="Bakiye Sonrası" Binding="{Binding BalanceAfterDisplay}" Width="1.5*"/>
+                <DataGridTextColumn Header="Açıklama" Binding="{Binding Description}" Width="2.4*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Grid.Row="2" Text="{Binding ErrorMessage}" Style="{StaticResource ErrorText}" Margin="0,12,0,0"/>
+    </Grid>
+</UserControl>
